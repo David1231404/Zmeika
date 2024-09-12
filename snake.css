@@ -62,7 +62,7 @@ body {
     position: relative;   
 }*/
 
-.snake,
+.segm,
 .apple {
     border-color: black;
     border-style: solid;
@@ -73,7 +73,7 @@ body {
     height: 20px;
 }
 
-.snake {
+.segm {
   background-color: #4e4949;
 }
 

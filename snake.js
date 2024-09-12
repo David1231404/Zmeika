@@ -2,23 +2,47 @@
 var boardWidth = 1280;
 var boardHeight = 800;
 
-class Snake{
+class Segm{
     constructor(left, top){
         this.left=Math.round(left);
         this.top=Math.round(top);
         //скорость змейки
         this.speed=125;
+        this.showme = document.createElement('div');
+    }
+    move(right, up) {  // на сколько сдвинуться вправо и вверх 5, 8; -100, -70
+        this.left += right;
+        this.top -= up;
+        this.showme.style.left=this.left + 'px';
+        this.showme.style.top=this.top + 'px';
     }
     render(){
         console.log(this.left, this.top);
-        let result = document.createElement('div');
-        result.setAttribute('class', 'snake');
-        result.style.left=this.left + 'px';
-        result.style.top=this.top + 'px';
-        console.log(result.style);
-        return result;
+        
+        this.showme.setAttribute('class', 'segm');
+        this.showme.style.left=this.left + 'px';
+        this.showme.style.top=this.top + 'px';
+        //console.log(this.showme.style);
+        return this.showme;
     }
 }
+
+class Snake extends Array {
+    render(gameBoard) {
+        for (let i = 0; i < this.length; i++) {
+            gameBoard.appendChild(this[i].render());
+        }
+    }
+    move(right, up) {
+        console.log('Snake moved');
+        for (let i = 0; i < this.length; i++) {
+            this[i].move(right, up);
+        }
+    }
+}
+
+
+
 class Apple{
     constructor(left, top){
         this.left=Math.round(left);
@@ -34,20 +58,10 @@ class Apple{
 }
 
 function addobjects() {
-    let snake = [
-        new Snake(  // первый сегмент
-            (boardWidth - 20) / 2, 
-            (boardHeight - 20) / 2
-        ),
-        new Snake( // второй сегмент
-            (boardWidth - 20) / 2, 
-            (boardHeight - 20) / 2 - 20
-        ),
-    ];
-
+    let snake = new Snake;
     
-    for (let i = 0; i < 10; i++) { 
-        snake.push(new Snake(
+    for (let i = 0; i < 4; i++) { 
+        snake.push(new Segm(
             (boardWidth - 20) / 2, 
             (boardHeight - 20) / 2 - (i * 20) 
         ));
@@ -58,9 +72,10 @@ function addobjects() {
         Math.random() * (boardHeight - 20)
     );
 
-    for (let i = 0; i < snake.length; i++) {
-        gameBoard.appendChild(snake[i].render());
-    }
+    snake.render(gameBoard);
+    setInterval(() => {
+        snake.move(10, -20);
+    }, 1000);
 
     // Рендерим яблоко
     gameBoard.appendChild(
