@@ -113,6 +113,8 @@ function changeDirection(keyCode) {
     false,
   );
 
+  
+
 /* Именно отсюда начинается вся программа */
 window.addEventListener(
     'load',
