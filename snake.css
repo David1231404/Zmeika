@@ -1,0 +1,84 @@
+/*@keyframes gradientAnimation {  
+    0% {  
+        border-color: red;   
+        box-shadow: 0 0 100px 1px red;  
+    }  
+    10% {  
+        border-color: orange;   
+        box-shadow: 0 0 100px 1px orange;  
+    }  
+    20% {  
+        border-color: yellow;   
+        box-shadow: 0 0 100px 1px yellow;  
+    }  
+    40% {  
+        border-color: green;   
+        box-shadow: 0 0 100px 1px green;  
+    }  
+    60% {  
+        border-color: blue;   
+        box-shadow: 0 0 100px 1px blue;  
+    }  
+    80% {  
+        border-color: indigo;   
+        box-shadow: 0 0 100px 1px indigo;  
+    }  
+    100% {  
+        border-color: violet;   
+        box-shadow: 0 0 100px 1px violet;  
+    }  
+} */ 
+
+body {  
+    /* background: rgb(0, 0, 0);*/  
+   /* display: flex;                 
+    justify-content: center;       
+    align-items: center;  */         
+    height: 100vh;                 
+    margin: 0;                     
+}  
+
+#gameBoard {  
+    border-width: 10px;
+    border-style: solid;  
+    /*animation: gradientAnimation 20s infinite; */ 
+    width: 1280px;            
+    height: 800px;           
+    background-color: #fff;   
+    /*box-shadow: 0 0 100px 1px;  */
+}  
+
+#score {  
+    font-size: 25px;  
+    font-weight: bold;  
+    color: blueviolet;  
+    /*text-align: center; */ 
+    margin-top: 50px;  
+    margin-bottom: 30px;  
+}  
+
+
+/*.container {  
+    position: relative;   
+}*/
+
+.snake,
+.apple {
+    border-color: black;
+    border-style: solid;
+    border-radius: 3px;
+    border-width: 1px;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}
+
+.snake {
+  background-color: #4e4949;
+}
+
+.apple {
+  background-color: greenyellow;
+}
+
+
