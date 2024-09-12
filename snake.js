@@ -41,7 +41,10 @@ class Snake extends Array {
     }
 }
 
-
+/* Заставить змейку двигаться
+1. По кнопке
+2. По таймеру, но "нормально"
+3. По таймеру, а по кнопке "изгибатся" и ползти в нужном направлении */
 
 class Apple{
     constructor(left, top){
@@ -96,6 +99,19 @@ function changeDirection(keyCode) {
     }
   }
 
+  document.addEventListener(
+    "keyup",
+    (event) => {
+      //const keyName = event.key;
+  
+      // As the user releases the Ctrl key, the key is no longer active,
+      // so event.ctrlKey is false.
+      //if (keyName === "Control") {
+        console.log("Control key was released ", event.key);
+      //}
+    },
+    false,
+  );
 
 /* Именно отсюда начинается вся программа */
 window.addEventListener(
