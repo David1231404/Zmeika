@@ -108,17 +108,7 @@ function addobjects() {
 }
 
 
-function changeDirection(keyCode) {
-    if (keyCode === 37 && direction !== "right") {
-      direction = "left";
-    } else if (keyCode === 38 && direction !== "down") {
-      direction = "up";
-    } else if (keyCode === 39 && direction !== "left") {
-      direction = "right";
-    } else if (keyCode === 40 && direction !== "up") {
-      direction = "down";
-    }
-  }
+
 
   document.addEventListener(
     "keyup",
@@ -134,8 +124,8 @@ function changeDirection(keyCode) {
     false,
   );
 
-  
 
+  
 /* Именно отсюда начинается вся программа */
 window.addEventListener(
     'load',

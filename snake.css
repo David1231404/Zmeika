@@ -69,12 +69,10 @@ body {
     border-radius: 3px;
     border-width: 1px;
     position: absolute;
-    width: 20px;
-    height: 20px;
 }
 
 .segm {
-  background-color: #4e4949;
+  background-color: #fed7fc;
 }
 
 .apple {
