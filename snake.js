@@ -37,7 +37,7 @@ class Snake extends Array {
     constructor() {
         super(...arguments)  // распаковка аргументов по позициям
         //скорость змейки
-        this.speed=125;
+        //this.speed=125;
         this.__dy = 0; // +1 move down each step -1 move up
         this.__dx = 1; // +1 move right; -1 move left
     }
@@ -80,7 +80,20 @@ class Apple extends Segm{
 function addobjects() {
     let snake = new Snake;
     
-    for (let i = 0; i < 10; i++) { 
+    document.addEventListener('keydown', function(event) {
+        var key = event.key || event.key;
+        if(key === 'ArrowRight' || key === '39') {
+            snake.__dx = 1; snake.__dy = 0; // Двигаемся вправо
+        } else if(key === 'ArrowUp' || key === '38') {
+            snake.__dx = 0; snake.__dy = -1; // Двигаемся вверх
+        } else if(key === 'ArrowLeft' || key === '37') {
+            snake.__dx = -1; snake.__dy = 0; // Двигаемся влево
+        } else if(key === 'ArrowDown' || key === '40') {
+            snake.__dx = 0; snake.__dy = 1; // Двигаемся вниз
+        }
+    });
+    
+    for (let i = 0; i < 4; i++) { 
         let ss = new Segm(
             (boardWidth - 20) / 2, 
             (boardHeight - 20) / 2 - (i * 20),
@@ -88,6 +101,7 @@ function addobjects() {
         );
         ss.setAttribute('value', i);
         snake.push(ss);
+        
     }
 
     let apple = new Apple(
@@ -98,17 +112,15 @@ function addobjects() {
 
     snake.render(gameBoard);
     setInterval(() => {
-        snake.move(10, -20);
+        snake.move(); // Просто вызов метода перемещения
     }, 1000);
+    
 
     // Рендерим яблоко
     gameBoard.appendChild(
         apple.render()
     );
 }
-
-
-
 
   document.addEventListener(
     "keyup",

@@ -45,6 +45,7 @@ body {
     width: 1280px;            
     height: 800px;           
     background-color: #fff;   
+    overflow: hidden;
     /*box-shadow: 0 0 100px 1px;  */
 }  
 
