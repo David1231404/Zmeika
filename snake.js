@@ -36,8 +36,6 @@ class Segm{
 class Snake extends Array {
     constructor() {
         super(...arguments)  // распаковка аргументов по позициям
-        //скорость змейки
-        //this.speed=125;
         this.__dy = 0; // +1 move down each step -1 move up
         this.__dx = 1; // +1 move right; -1 move left
     }
@@ -51,28 +49,17 @@ class Snake extends Array {
         if (this.length) {
             console.log('Я ползу!');
             for (let i = this.length - 1; i > 0; i--) {  // Перебираем змейку с хвоста
-                //console.log(i, this[i].x, this[i].y);
+              
                 this[i].move(this[i-1].x, this[i-1].y);
-                //console.log(i, this[i].x, this[i].y);
-                //console.log();
             }
             console.log(0, this[0].x, this[0].y);
             this[0].move(this[0].x + this.__dx, this[0].y + this.__dy);
-            console.log(0, this[0].x, this[0].y);
-            //for (let i = 0; i < this.length - 1; i++) {
-            //    this[i].move(this[i+1].x, this[i+1].y);
-            //}
-            //this[this.length - 1].move(this.x + this.__dx, this.y + this.__dy);
+            console.log(0, this[0].x, this[0].y)
         } else {
             console.log('Меня нет!');
         }
     }
 }
-
-/* Заставить змейку двигаться
-1. По кнопке
-2. По таймеру, но "нормально"
-3. По таймеру, а по кнопке "изгибатся" и ползти в нужном направлении */
 
 class Apple extends Segm{
 }
@@ -113,9 +100,8 @@ function addobjects() {
     snake.render(gameBoard);
     setInterval(() => {
         snake.move(); // Просто вызов метода перемещения
-    }, 1000);
+    }, 250);
     
-
     // Рендерим яблоко
     gameBoard.appendChild(
         apple.render()
@@ -125,19 +111,11 @@ function addobjects() {
   document.addEventListener(
     "keyup",
     (event) => {
-      //const keyName = event.key;
-  
-      // As the user releases the Ctrl key, the key is no longer active,
-      // so event.ctrlKey is false.
-      //if (keyName === "Control") {
         console.log("Control key was released ", event.key);
-      //}
     },
     false,
   );
 
-
-  
 /* Именно отсюда начинается вся программа */
 window.addEventListener(
     'load',
