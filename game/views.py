@@ -5,3 +5,9 @@ def startgame(request):
         request,
         'game/snake.html'
     )
+
+def mainpage(request):
+    return render(
+        request,
+        'game/nGame.html'
+    )
