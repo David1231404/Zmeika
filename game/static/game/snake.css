@@ -1,71 +1,33 @@
-/*@keyframes gradientAnimation {  
-    0% {  
-        border-color: red;   
-        box-shadow: 0 0 100px 1px red;  
-    }  
-    10% {  
-        border-color: orange;   
-        box-shadow: 0 0 100px 1px orange;  
-    }  
-    20% {  
-        border-color: yellow;   
-        box-shadow: 0 0 100px 1px yellow;  
-    }  
-    40% {  
-        border-color: green;   
-        box-shadow: 0 0 100px 1px green;  
-    }  
-    60% {  
-        border-color: blue;   
-        box-shadow: 0 0 100px 1px blue;  
-    }  
-    80% {  
-        border-color: indigo;   
-        box-shadow: 0 0 100px 1px indigo;  
-    }  
-    100% {  
-        border-color: violet;   
-        box-shadow: 0 0 100px 1px violet;  
-    }  
-} */ 
 
 body {  
-    /* background: rgb(0, 0, 0);*/  
-   /* display: flex;                 
-    justify-content: center;       
-    align-items: center;  */         
+          
     height: 100vh;                 
     margin: 0;                     
 }  
 
 #gameBoard {  
-    border-width: 10px;
+    border-width: 1px;
     border-style: solid;  
-    /*animation: gradientAnimation 20s infinite; */ 
-    width: 1280px;            
-    height: 800px;           
+    width: 400px;            
+    height: 400px;           
     background-color: #fff;   
     overflow: hidden;
-    /*box-shadow: 0 0 100px 1px;  */
+    position: relative;
 }  
 
 #score {  
     font-size: 25px;  
     font-weight: bold;  
-    color: blueviolet;  
-    /*text-align: center; */ 
-    margin-top: 50px;  
-    margin-bottom: 30px;  
+    color: rgb(0, 0, 0);  
+    margin-top: 5px;  
+    margin-bottom: 3px;  
 }  
 
 
-/*.container {  
-    position: relative;   
-}*/
 
 .segm,
 .apple {
-    border-color: black;
+    border-color: rgb(0, 0, 0);
     border-style: solid;
     border-radius: 3px;
     border-width: 1px;
@@ -73,7 +35,7 @@ body {
 }
 
 .segm {
-  background-color: #fed7fc;
+  background-color: #ff00f2;
 }
 
 .apple {
@@ -81,7 +43,70 @@ body {
 }
 
 
+
+
+
+
+/*css для nGame.html */
+
+body.background {
+    background-color: black; /* Черный фон для body */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Центрирование по вертикали */
+    position: relative; /* Для позиционирования заголовка */
+}
+
+.welcome-title {
+    margin-bottom: 20px; /* Отступ между заголовком и кнопкой */
+    font-size: 50px; /* Размер шрифта заголовка */
+    color: black; /* Цвет текста заголовка */
+    position: relative; /* Для анимации свечения */
+    z-index: 1; /* Убедитесь, что заголовок выше кнопки */
+    animation: blink 2s infinite; /* Увеличение времени анимации мигания */
+}
+
+@keyframes blink {
+    0%, 100% { text-shadow: 
+        0 0 5px white, 
+        0 0 10px white, 
+        0 0 15px white, 
+        0 0 20px rgba(255, 255, 255, 0.5); }
+    50% { text-shadow: 
+        0 0 5px white, 
+        0 0 10px white, 
+        0 0 15px white, 
+        0 0 20px rgba(255, 255, 255, 0); } /* Прозрачность обводки */
+}
+
 .btn {
-    border-radius: 5px;
-    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px; /* Ширина кнопки */
+    height: 50px; /* Высота кнопки */
+    background-color: white; /* Белый фон */
+    color: black; /* Черный текст */
+    border: 2px solid black; /* Черная обводка */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-weight: bold; /* Жирный текст */
+    font-size: 16px; /* Размер шрифта */
+    transition: box-shadow 0.5s; /* Плавный переход для тени */
+    animation: glow 3s infinite; /* Увеличение времени анимации свечения */
+    position: relative; /* Для анимации свечения */
+    z-index: 0; /* Кнопка ниже заголовка */
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(255, 255, 255, 0); /* Без свечения */
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8); /* Светлое свечение */
+    }
 }
