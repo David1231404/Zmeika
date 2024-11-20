@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black; /* Цвет фона для контраста */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов */
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Центрирование по вертикали */
+    position: relative; /* Для позиционирования заголовка */
+}
+
+.logo {
+    margin-bottom: 20px; /* Отступ между изображением и кнопкой */
+    max-width: 50%; /* Ограничение ширины изображения */
+     /* Автоматическая высота для сохранения пропорций */
+}
+
+.btn {
+    background-color: #ff0000; /* Красный цвет кнопки */
+    color: white; /* Белый текст */
+    border: 2px solid #cc0000; /* Темно-красная рамка */
+    padding: 10px 20px; /* Отступы для кнопки */
+    font-family: 'Press Start 2P', cursive; /* Пиксельный шрифт */
+    font-size: 16px; /* Размер шрифта */
+    text-decoration: none; /* Убираем подчеркивание */
+    cursor: pointer; /* Указатель курсора при наведении */
+    position: relative; /* Для эффекта нажатия */
+    transition: all 0.1s; /* Плавный переход для эффекта нажатия */
+    box-shadow: 0 5px #cc0000; /* Тень для имитации объема */
+    font-family: 'Press Start 2P', cursive;
+}
+
+.btn:active {
+    background-color: #cc0000; /* Темно-красный цвет при нажатии */
+    box-shadow: 0 2px #990000; /* Уменьшение тени при нажатии */
+    transform: translateY(2px); /* Перемещение кнопки вниз при нажатии */
+}

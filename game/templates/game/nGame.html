@@ -1,17 +1,15 @@
-
 {% load static %}
-<link href={% static "game/snake.css" %} rel="stylesheet">
+<link href="{% static 'game/nGame.css' %}" rel="stylesheet">
 
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body class="background">
-
     <div class="button-container">
-        <h1 class="welcome-title">Добро пожаловать в игру!</h1>
-        <a class="btn" href="/start">Начать игру</a>
+        <img src="{% static 'game/logo.png' %}" class="logo">
+        <a class="btn" href="/start">PLAY</a>
     </div>
-    
 </body>
 </html>

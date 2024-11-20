@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href={% static "game/snake.css" %} rel="stylesheet">
-    <script src={% static "game/snake.js" %}> </script> 
-    <title>Document</title>
+    <link href="{% static 'game/snake.css' %}" rel="stylesheet">
+    <script src="{% static 'game/snake.js' %}"></script> 
+    <link rel="icon" href="{% static 'game/favicon.png' %}" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <title>Snake</title>
 </head>
 <body>
-    
-        <div id="score">Очки: 0</div>
-        <div id="gameBoard"></div>
-    
+    <div id="score">Очки: 0</div>
+    <img id="overlayImage" src="{% static 'game/frame.png' %}" />
+    <div id="gameBoard">
+        
+    </div>
 </body>
 </html>
-
-    

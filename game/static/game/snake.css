@@ -1,112 +1,81 @@
+body {   
+  height: 100vh; /* Устанавливаем высоту тела документа на 100% высоты видимой области браузера */
+  margin: 0; /* Убираем отступы по умолчанию вокруг тела документа */
+  display: flex; /* Используем Flexbox для размещения элементов внутри body */
+  flex-direction: column; /* Изменяем направление на колонку для вертикального расположения элементов */
+  align-items: center; /* Центрируем элементы по горизонтали */
+  justify-content: center; /* Выравнивание элементов по центру по вертикали */
+  background-image: url('/static/game/jungle.png'); /* Устанавливаем фоновое изображение */
+  background-size: cover; /* Масштабируем изображение так, чтобы оно занимало весь экран */
+  background-position: center; /* Центрируем фоновое изображение */
+}   
 
-body {  
-          
-    height: 100vh;                 
-    margin: 0;                     
+.container { /* Новый контейнер для выравнивания элементов */
+  display: flex; /* Используем Flexbox для размещения элементов внутри контейнера */
+  flex-direction: column; /* Вертикальное расположение элементов внутри контейнера */
+  align-items: center; /* Центрирование элементов по горизонтали внутри контейнера */
+}
+
+#score {   
+  font-size: 25px; /* Размер шрифта для текста "Очки" */
+  font-weight: bold; /* Устанавливаем жирный шрифт */
+  color: rgb(47, 143, 68); /* Цвет текста в формате RGB */
+  margin-top: 20px; /* Отступ сверху для отдаления от верхнего края */
+  margin-bottom: 50px; /* Отступ снизу для отдаления от нижнего края */
+  text-align: center; /* Выравнивание текста по центру */
+  font-family: 'Press Start 2P', cursive; /* Шрифт для текста "Очки" */
+  -webkit-text-stroke: 0.5px rgb(25, 77, 45); /* Окантовка текста: 0.5 пикселя, темно-зеленый цвет */
 }  
 
-#gameBoard {  
-    border-width: 1px;
-    border-style: solid;  
-    width: 400px;            
-    height: 400px;           
-    background-color: #fff;   
-    overflow: hidden;
-    position: relative;
-}  
+#gameBoard {   
+  border-width: 1px; /* Ширина границы игрового поля */
+  border-style: solid; /* Стиль границы - сплошная линия */
+  width: 400px; /* Ширина игрового поля */
+  height: 400px; /* Высота игрового поля */
+  background-color: #4d8f4d; /* Темно-зеленый фон для игрового поля */
+  overflow: hidden; /* Скрываем содержимое, выходящее за пределы игрового поля */
+  position: relative; /* Устанавливаем относительное позиционирование для дочерних элементов */
+  display: grid; /* Используем Grid Layout для размещения элементов внутри игрового поля */
+  grid-template-columns: repeat(20, 20px); /* Создаем 20 колонок по 20 пикселей каждая */
+  grid-template-rows: repeat(20, 20px); /* Создаем 20 строк по 20 пикселей каждая */
+}
 
-#score {  
-    font-size: 25px;  
-    font-weight: bold;  
-    color: rgb(0, 0, 0);  
-    margin-top: 5px;  
-    margin-bottom: 3px;  
-}  
+#overlayImage {
+  position: absolute; /* Устанавливаем абсолютное позиционирование для наложенного изображения */
+  top: 29%; /* Устанавливаем верхнее смещение в 29% от верхнего края родительского элемента */
+  left: 36.5%; /* Устанавливаем левое смещение в 36.5% от левого края родительского элемента */
+  pointer-events: none; /* Игнорируем события указателя (например, клики) для этого элемента */
+  z-index: 10; /* Устанавливаем уровень наложения, чтобы элемент был выше других */
+  width: 600px; /* Ширина наложенного изображения */
+  height: 600px; /* Высота наложенного изображения */
+  /*border: 2px solid rgb(255, 255, 255); /* Закомментированная строка для добавления рамки вокруг изображения для проверки видимости */
+}
 
+/* Создание чередующихся квадратов для игрового поля */
+#gameBoard div {
+  width: 20px; /* Ширина каждого квадрата внутри игрового поля */
+  height: 20px; /* Высота каждого квадрата внутри игрового поля */
+}
 
+#gameBoard div:nth-child(odd) {
+  background-color: #b2d6b2; /* Светло-зеленый цвет для нечетных квадратов */
+}
+
+#gameBoard div:nth-child(even) {
+  background-color: #d9f2d9; /* Очень светло-зеленый цвет для четных квадратов */
+}
 
 .segm,
-.apple {
-    border-color: rgb(0, 0, 0);
-    border-style: solid;
-    border-radius: 3px;
-    border-width: 1px;
-    position: absolute;
+.apple { /* Общие стили для сегментов и яблок */
+  border-style: solid; /* Стиль границы - сплошная линия */
+  border-width: 0px; /* Ширина границы - 0, чтобы граница не отображалась */
+  position: absolute; /* Устанавливаем абсолютное позиционирование для сегментов и яблок */
 }
 
-.segm {
-  background-color: #ff00f2;
+.segm { /* Стили для сегментов змейки */
+  background: green; /* Фоновый цвет сегментов - зеленый */
 }
 
-.apple {
-  background-color: greenyellow;
-}
-
-
-
-
-
-
-/*css для nGame.html */
-
-body.background {
-    background-color: black; /* Черный фон для body */
-}
-
-.button-container {
-    display: flex;
-    flex-direction: column; /* Вертикальное расположение элементов */
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Центрирование по вертикали */
-    position: relative; /* Для позиционирования заголовка */
-}
-
-.welcome-title {
-    margin-bottom: 20px; /* Отступ между заголовком и кнопкой */
-    font-size: 50px; /* Размер шрифта заголовка */
-    color: black; /* Цвет текста заголовка */
-    position: relative; /* Для анимации свечения */
-    z-index: 1; /* Убедитесь, что заголовок выше кнопки */
-    animation: blink 2s infinite; /* Увеличение времени анимации мигания */
-}
-
-@keyframes blink {
-    0%, 100% { text-shadow: 
-        0 0 5px white, 
-        0 0 10px white, 
-        0 0 15px white, 
-        0 0 20px rgba(255, 255, 255, 0.5); }
-    50% { text-shadow: 
-        0 0 5px white, 
-        0 0 10px white, 
-        0 0 15px white, 
-        0 0 20px rgba(255, 255, 255, 0); } /* Прозрачность обводки */
-}
-
-.btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100px; /* Ширина кнопки */
-    height: 50px; /* Высота кнопки */
-    background-color: white; /* Белый фон */
-    color: black; /* Черный текст */
-    border: 2px solid black; /* Черная обводка */
-    text-decoration: none; /* Убираем подчеркивание */
-    font-weight: bold; /* Жирный текст */
-    font-size: 16px; /* Размер шрифта */
-    transition: box-shadow 0.5s; /* Плавный переход для тени */
-    animation: glow 3s infinite; /* Увеличение времени анимации свечения */
-    position: relative; /* Для анимации свечения */
-    z-index: 0; /* Кнопка ниже заголовка */
-}
-
-@keyframes glow {
-    0%, 100% {
-        box-shadow: 0 0 0 rgba(255, 255, 255, 0); /* Без свечения */
-    }
-    50% {
-        box-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.8); /* Светлое свечение */
-    }
+.apple { /* Стили для яблок */
+  background-color: rgb(225, 0, 0); /* Фоновый цвет яблок - красный */
 }
